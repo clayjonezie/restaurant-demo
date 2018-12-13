@@ -38,6 +38,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="ggu-t9-bfF" id="Bkx-cd-6GG"/>
+                        <outlet property="searchBar" destination="Vlg-rh-eLM" id="cyv-UZ-zRJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

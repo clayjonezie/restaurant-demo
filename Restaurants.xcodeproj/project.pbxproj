@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F15DBE221C2C0A9005FEB5B /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F15DBE121C2C0A9005FEB5B /* Restaurant.swift */; };
 		6F47C9A221C0B00F00BB20E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47C9A121C0B00F00BB20E2 /* AppDelegate.swift */; };
 		6F47C9A421C0B00F00BB20E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47C9A321C0B00F00BB20E2 /* ViewController.swift */; };
 		6F47C9A721C0B00F00BB20E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F47C9A521C0B00F00BB20E2 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F15DBE121C2C0A9005FEB5B /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		6F47C99E21C0B00F00BB20E2 /* Restaurants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F47C9A121C0B00F00BB20E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F47C9A321C0B00F00BB20E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				6F47C9A821C0B00F00BB20E2 /* Restaurants.xcdatamodeld */,
 				6F47C9C421C0B5C300BB20E2 /* ApiClient.swift */,
 				6F47C9C621C0B72E00BB20E2 /* ApplicationContext.swift */,
+				6F15DBE121C2C0A9005FEB5B /* Restaurant.swift */,
 			);
 			path = Restaurants;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				6F47C9A421C0B00F00BB20E2 /* ViewController.swift in Sources */,
 				6F47C9C721C0B72E00BB20E2 /* ApplicationContext.swift in Sources */,
+				6F15DBE221C2C0A9005FEB5B /* Restaurant.swift in Sources */,
 				6F47C9A221C0B00F00BB20E2 /* AppDelegate.swift in Sources */,
 				6F47C9AA21C0B00F00BB20E2 /* Restaurants.xcdatamodeld in Sources */,
 				6F47C9C521C0B5C300BB20E2 /* ApiClient.swift in Sources */,

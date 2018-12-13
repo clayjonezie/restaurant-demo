@@ -11,7 +11,7 @@ import CoreLocation
 
 protocol ApplicationContextDelegate {
   
-  func didUpdateLocation(location: CLLocation)
+  func didUpdateLocation(to location: CLLocation)
   
 }
 
@@ -46,7 +46,7 @@ extension ApplicationContext: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     if let last = locations.last {
-      self.delegate?.didUpdateLocation(location: last)
+      self.delegate?.didUpdateLocation(to: last)
     }
   }
   

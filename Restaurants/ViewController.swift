@@ -8,27 +8,31 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class MapResultsViewController: UIViewController {
-  
+
   let appContext: ApplicationContext
   var hasSubmittedInitialQuery = false
+  var userLocationMarkerView: MKMarkerAnnotationView?
+  var currentAnnotations: [MKAnnotation]
+
+  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   required init?(coder aDecoder: NSCoder) {
     appContext = ApplicationContext()
+    self.currentAnnotations = []
 
     super.init(coder: aDecoder)
     
     self.appContext.delegate = self
   }
-//  
-//  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//    appContext = ApplicationContext()
-//    
-//    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    
-//    self.appContext.delegate = self
-//  }
+  
+  override func viewDidLoad() {
+    self.mapView.showsUserLocation = true
+    self.mapView.userLocation.title = nil
+  }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -46,8 +50,10 @@ class MapResultsViewController: UIViewController {
   
   func fetchInitialResults(with location: CLLocation) {
     self.hasSubmittedInitialQuery = true
-    self.appContext.apiClient.requestRestaurants(with: nil, location: location) {
-      // todo
+    self.appContext.apiClient.requestNearbyRestaurants(for: location) { (maybeResult, maybeError) in
+      if let result = maybeResult {
+        self.renderLocations(in: result)
+      }
     }
   }
   
@@ -61,14 +67,40 @@ class MapResultsViewController: UIViewController {
     
     self.present(alertController, animated: true)
   }
+  
+  func setMapViewPort(to location: CLLocation) {
+    let mapPoints = 1500 * MKMapPointsPerMeterAtLatitude(location.coordinate.latitude)
+    let mapRect = MKMapRect(origin: MKMapPoint(location.coordinate), size: MKMapSize(width: mapPoints, height: mapPoints))
+    let centeredMapRect = mapRect.offsetBy(dx: -mapPoints / 2, dy: -mapPoints / 2)
+    self.mapView.setVisibleMapRect(centeredMapRect, animated: true)
+  }
+  
+  func renderLocations(in result: RestaurantsResult) {
+    // todo clear existing
+    mapView.removeAnnotations(currentAnnotations)
+    currentAnnotations = []
+    currentAnnotations = result.results.compactMap({ (restaurant) -> MKAnnotation? in
+      if let location = restaurant.clLocation2D() {
+        let it = MKPointAnnotation()
+        it.coordinate = location
+        return it
+//        let placemark = MKPlacemark(coordinate: location)
+//        return placemark
+      }
+      return nil
+    })
 
+    mapView.addAnnotations(currentAnnotations)
+  }
+  
 }
 
 extension MapResultsViewController: ApplicationContextDelegate {
   
-  func didUpdateLocation(location: CLLocation) {
+  func didUpdateLocation(to location: CLLocation) {
     if !hasSubmittedInitialQuery {
       self.fetchInitialResults(with: location)
+      self.setMapViewPort(to: location)
     }
   }
   
