@@ -58,9 +58,7 @@ class MapResultsViewController: UIViewController {
   
   func fetchInitialResults(with location: CLLocation) {
     self.hasSubmittedInitialQuery = true
-    self.showActivityIndicator()
     self.appContext.apiClient.requestNearbyRestaurants(for: location) { (maybeResult, maybeError) in
-      self.hideActivityIndicator()
       if let result = maybeResult {
         self.renderLocationsOnMap(in: result)
       } else {
@@ -71,9 +69,7 @@ class MapResultsViewController: UIViewController {
   
   func fetchSearchResults(with keyword: String) {
     if let userLocation = self.mapView.userLocation.location {
-      self.showActivityIndicator()
       self.appContext.apiClient.requestNearbyRestaurants(for: userLocation, keyword: keyword) { (maybeResult, maybeError) in
-        self.hideActivityIndicator()
         if let result = maybeResult {
           if self.resultsOnMapSwitch.isOn {
             self.renderLocationsOnMap(in: result)
@@ -180,19 +176,6 @@ class MapResultsViewController: UIViewController {
   func deselectAllAnnotations() {
     self.mapView.selectedAnnotations.forEach { (annotation) in
       self.mapView.deselectAnnotation(annotation, animated: true)
-    }
-  }
-  
-  func showActivityIndicator() {
-    let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
-    self.view.addSubview(indicator)
-  }
-  
-  func hideActivityIndicator() {
-    self.view.subviews.forEach { (view) in
-      if view.isKind(of: UIActivityIndicatorView.self) {
-        view.removeFromSuperview()
-      }
     }
   }
   
