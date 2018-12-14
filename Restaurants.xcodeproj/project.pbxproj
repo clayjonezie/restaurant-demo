@@ -14,7 +14,6 @@
 		6F47C9A721C0B00F00BB20E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F47C9A521C0B00F00BB20E2 /* Main.storyboard */; };
 		6F47C9AC21C0B01200BB20E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F47C9AB21C0B01200BB20E2 /* Assets.xcassets */; };
 		6F47C9AF21C0B01200BB20E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F47C9AD21C0B01200BB20E2 /* LaunchScreen.storyboard */; };
-		6F47C9BA21C0B01200BB20E2 /* RestaurantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47C9B921C0B01200BB20E2 /* RestaurantsTests.swift */; };
 		6F47C9C521C0B5C300BB20E2 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47C9C421C0B5C300BB20E2 /* ApiClient.swift */; };
 		6F47C9C721C0B72E00BB20E2 /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47C9C621C0B72E00BB20E2 /* ApplicationContext.swift */; };
 /* End PBXBuildFile section */
@@ -40,8 +39,6 @@
 		6F47C9AE21C0B01200BB20E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F47C9B021C0B01200BB20E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F47C9B521C0B01200BB20E2 /* RestaurantsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F47C9B921C0B01200BB20E2 /* RestaurantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsTests.swift; sourceTree = "<group>"; };
-		6F47C9BB21C0B01200BB20E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F47C9C421C0B5C300BB20E2 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = SOURCE_ROOT; };
 		6F47C9C621C0B72E00BB20E2 /* ApplicationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				6F47C9A021C0B00F00BB20E2 /* Restaurants */,
-				6F47C9B821C0B01200BB20E2 /* RestaurantsTests */,
 				6F47C99F21C0B00F00BB20E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,15 +93,6 @@
 				6F15DBE321C365D4005FEB5B /* ResultsTableViewController.swift */,
 			);
 			path = Restaurants;
-			sourceTree = "<group>";
-		};
-		6F47C9B821C0B01200BB20E2 /* RestaurantsTests */ = {
-			isa = PBXGroup;
-			children = (
-				6F47C9B921C0B01200BB20E2 /* RestaurantsTests.swift */,
-				6F47C9BB21C0B01200BB20E2 /* Info.plist */,
-			);
-			path = RestaurantsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +209,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F47C9BA21C0B01200BB20E2 /* RestaurantsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
