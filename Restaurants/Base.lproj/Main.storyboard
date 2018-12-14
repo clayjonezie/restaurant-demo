@@ -23,23 +23,37 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggu-t9-bfF">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="528"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show results on map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIQ-d3-kA8">
+                                <rect key="frame" x="16" y="96" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBt-0O-gnW">
+                                <rect key="frame" x="310" y="92" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ggu-t9-bfF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="D6y-jl-Aed"/>
+                            <constraint firstItem="ggu-t9-bfF" firstAttribute="top" secondItem="uBt-0O-gnW" secondAttribute="bottom" constant="16" id="23W-CI-0XY"/>
+                            <constraint firstItem="uBt-0O-gnW" firstAttribute="top" secondItem="Vlg-rh-eLM" secondAttribute="bottom" constant="16" id="6t4-N4-pTI"/>
+                            <constraint firstItem="xIQ-d3-kA8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DX4-dO-6OE"/>
                             <constraint firstItem="Vlg-rh-eLM" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="FhU-OX-G0s"/>
-                            <constraint firstItem="ggu-t9-bfF" firstAttribute="top" secondItem="Vlg-rh-eLM" secondAttribute="bottom" id="Iya-rG-11B"/>
-                            <constraint firstItem="ggu-t9-bfF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="X7C-XT-XId"/>
+                            <constraint firstItem="ggu-t9-bfF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZbU-rA-CqF"/>
+                            <constraint firstItem="ggu-t9-bfF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="dxu-3i-z2m"/>
                             <constraint firstItem="Vlg-rh-eLM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="epv-2C-HAp"/>
-                            <constraint firstItem="ggu-t9-bfF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fI4-cn-Fti"/>
                             <constraint firstItem="Vlg-rh-eLM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hOd-u3-DjU"/>
+                            <constraint firstItem="xIQ-d3-kA8" firstAttribute="top" secondItem="Vlg-rh-eLM" secondAttribute="bottom" constant="20" id="jb9-DY-sdj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uBt-0O-gnW" secondAttribute="trailing" constant="16" id="q5V-WO-fnX"/>
+                            <constraint firstItem="ggu-t9-bfF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zkW-VP-pm1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="ggu-t9-bfF" id="Bkx-cd-6GG"/>
+                        <outlet property="resultsOnMapSwitch" destination="uBt-0O-gnW" id="oUD-z2-1RO"/>
                         <outlet property="searchBar" destination="Vlg-rh-eLM" id="cyv-UZ-zRJ"/>
                     </connections>
                 </viewController>

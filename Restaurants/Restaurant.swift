@@ -9,13 +9,6 @@
 import Foundation
 import CoreLocation
 
-/*
- Other interesting fields:
-   geometry.viewport
-   vicinity
-   opening_hours
- */
-
 struct RestaurantsResult: Codable {
   
   var results: [Restaurant]
@@ -30,6 +23,8 @@ struct Restaurant: Codable {
   var price_level: Int?
   var rating: Float?
   var name: String?
+  var opening_hours: RestaurantOpening?
+  var vicinity: String?
   
   func clLocation2D() -> CLLocationCoordinate2D? {
     if let lat = self.geometry?.location?.lat,
@@ -39,11 +34,39 @@ struct Restaurant: Codable {
     return nil
   }
   
+  func formattedDescription() -> String {
+    var components = [String]()
+    
+    if let rating = self.rating {
+      components.append("\(rating) out of 5 stars")
+    }
+    
+    if let price = self.price_level {
+      components.append("price level: \(price)")
+    }
+    
+    if let vicinity = self.vicinity {
+      components.append(vicinity)
+    }
+    
+    if let isOpen = self.opening_hours?.open_now {
+      components.append(isOpen ? "Currently Open" : "Currently Closed")
+    }
+    
+    return components.joined(separator: "\n")
+  }
+  
 }
 
 struct RestaurantGeometry: Codable {
   
   var location: DecodablePoint?
+  
+}
+
+struct RestaurantOpening: Codable {
+  
+  var open_now: Bool
   
 }
 

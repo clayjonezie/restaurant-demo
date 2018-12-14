@@ -11,8 +11,15 @@ import CoreLocation
 
 public class ApiClient {
   
-  func requestNearbyRestaurants(for location: CLLocation, completion: @escaping (RestaurantsResult?, Error?) -> Void) {
-    if let url = self.nearbyRestaurantsQuery(for: location) {
+  enum Constant {
+    static let defaultRadius = 1500
+  }
+  
+  func requestNearbyRestaurants(for location: CLLocation,
+                                keyword: String? = nil,
+                                radius: Int = Constant.defaultRadius,
+                                completion: @escaping (RestaurantsResult?, Error?) -> Void) {
+    if let url = self.nearbyRestaurantsQuery(for: location, keyword: keyword, radius: radius) {
       let task = URLSession.shared.dataTask(with: url) { (maybeData, maybeUrlResponse, maybeError) in
         if let data = maybeData {
           var results: RestaurantsResult?
@@ -33,34 +40,27 @@ public class ApiClient {
     }
   }
   
-  func nearbyRestaurantsQuery(for location: CLLocation) -> URL? {
-    return URL(string:
-      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-        "key=AIzaSyC9iT33vKT-pb7Lrok97X5aNPhGlY6iDBo" +
-//        "&location=\(location.formatted)" +
-        "&location=37.454822,-122.220637" +
-        "&radius=1500" +
-        
-        // use keyword
-      "&type=restaurant")
-  }
-  
-  func googlePlacesUrl(for query: String?, location: CLLocation) -> URL? {
-    return URL(string:
-      "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" +
+  func nearbyRestaurantsQuery(for location: CLLocation,
+                              keyword: String? = nil,
+                              radius: Int) -> URL? {
+    var urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
       "key=AIzaSyC9iT33vKT-pb7Lrok97X5aNPhGlY6iDBo" +
-      "&inputtype=textquery" +
-//      "&input=\(query ?? "")" + // todo avoid if nil
-      "&locationbias=point:\(location.formatted)")
+      "&location=\(location.formatted)" +
+      "&radius=\(radius)" +
+     "&type=restaurant"
+    
+    if let keyword = keyword {
+      urlString.append("&keyword=\(keyword)")
+    }
+    return URL(string: urlString)
   }
-  
   
 }
 
 extension CLLocation {
   
   var formatted: String {
-    return "\(self.coordinate.latitude),\(self.coordinate.latitude)"
+    return "\(self.coordinate.latitude),\(self.coordinate.longitude)"
   }
   
 }
